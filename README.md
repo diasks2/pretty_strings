@@ -23,9 +23,11 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-
-text = ""
+text = "&amp;lt;CharStyle:body copy&amp;gt;The Supe&amp;lt;cTracking:-75&amp;gt;r&amp;lt;cTracking:&amp;gt;Track system is easy to set up and use, providing real-time &amp;lt;SoftReturn&amp;gt;insight and stats."
 PrettyStrings::Cleaner.new(text).pretty
+
+# => "The SuperTrack system is easy to set up and use, providing real-time insight and stats."
+```
 
 ## Development
 

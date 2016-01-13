@@ -104,4 +104,9 @@ describe PrettyStrings do
     text = "Hello\t\tworld."
     expect(PrettyStrings::Cleaner.new(text).pretty).to eq("Hello world.")
   end
+
+  it "prettify example #021" do
+    text = "&amp;lt;CharStyle:body copy&amp;gt;The Supe&amp;lt;cTracking:-75&amp;gt;r&amp;lt;cTracking:&amp;gt;Track system is easy to set up and use, providing real-time &amp;lt;SoftReturn&amp;gt;insight and stats."
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq("The SuperTrack system is easy to set up and use, providing real-time insight and stats.")
+  end
 end
