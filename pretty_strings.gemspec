@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Kevin S. Dias"]
   spec.email         = ["diasks2@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Take strings that have been abused in the wild and clean them up (for translation tools)}
+  spec.description   = %q{Clean up strings (html entities, html/xml code, unnecessary whitespace, etc.) to prep them to be better searched or analyzed.}
   spec.homepage      = "https://github.com/diasks2/pretty_strings"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
