@@ -1,4 +1,4 @@
-# PrettyStrings
+# Pretty Strings
 
 [![Gem Version](https://badge.fury.io/rb/pretty_strings.svg)](https://badge.fury.io/rb/pretty_strings) [![Build Status](https://travis-ci.org/diasks2/pretty_strings.png)](https://travis-ci.org/diasks2/pretty_strings) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/diasks2/pretty_strings/blob/master/LICENSE.txt)
 
