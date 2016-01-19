@@ -10,7 +10,8 @@ module PrettyStrings
 
     def pretty
       return '' if text.nil? || text.empty?
-      replace_symbol_with_bracket(
+      remove_bracketed_numbers(
+        replace_symbol_with_bracket(
         remove_newlines(
         replace_tabs(
         remove_bracketed_code(
@@ -22,7 +23,7 @@ module PrettyStrings
         sanitize_text(
         replace_bracket_with_symbol(
         text
-      ))))))))))).squeeze(" ").strip
+      )))))))))))).squeeze(" ").strip
     end
 
     private
@@ -37,7 +38,17 @@ module PrettyStrings
     end
 
     def remove_bracketed_code(text)
+      text.gsub!(/(?<=\*\*)\{(?=date\}\*\*)/, '⚘') || text
+      text.gsub!(/(?<=\*\*)\{(?=number\}\*\*)/, '⚘') || text
+      text.gsub!(/(?<=\*\*)\{(?=email\}\*\*)/, '⚘') || text
+      text.gsub!(/(?<=\*\*)\{(?=url\}\*\*)/, '⚘') || text
+      text.gsub!(/(?<=\*\*\{date)\}(?=\*\*)/, '♚') || text
+      text.gsub!(/(?<=\*\*\{number)\}(?=\*\*)/, '♚') || text
+      text.gsub!(/(?<=\*\*\{email)\}(?=\*\*)/, '♚') || text
+      text.gsub!(/(?<=\*\*\{url)\}(?=\*\*)/, '♚') || text
       text.gsub!(/\{.*?\}/, '') || text
+      text.gsub!(/♚/, '}') || text
+      text.gsub!(/⚘/, '{') || text
     end
 
     def replace_bracket_with_symbol(text)
@@ -46,6 +57,10 @@ module PrettyStrings
 
     def replace_symbol_with_bracket(text)
       text.gsub!(/♳/, '<') || text
+    end
+
+    def remove_bracketed_numbers(text)
+      text.gsub!(/\<\d+\>/, '') || text
     end
 
     def escape_text(text)

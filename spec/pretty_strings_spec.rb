@@ -119,4 +119,14 @@ describe PrettyStrings do
     text = "こんにちは、今日は土曜日。"
     expect(PrettyStrings::Cleaner.new(text).pretty).to eq("こんにちは、今日は土曜日。")
   end
+
+  it "prettifies example #024" do
+    text = "**{date}** **{number}** **{email}** **{url}** test"
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq("**{date}** **{number}** **{email}** **{url}** test")
+  end
+
+  it "prettifies example #025" do
+    text = "How satisfied were you with the way in which the car was handed over to you?<it pos='begin'>&lt;6&gt;</it>"
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq("How satisfied were you with the way in which the car was handed over to you?")
+  end
 end
