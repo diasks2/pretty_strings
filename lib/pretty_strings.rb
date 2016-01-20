@@ -11,6 +11,7 @@ module PrettyStrings
     def pretty
       return '' if text.nil? || text.empty?
       remove_bracketed_numbers(
+        remove_consecutive_dots(
         replace_symbol_with_bracket(
         remove_newlines(
         replace_tabs(
@@ -23,7 +24,7 @@ module PrettyStrings
         sanitize_text(
         replace_bracket_with_symbol(
         text
-      )))))))))))).squeeze(" ").strip
+      ))))))))))))).squeeze(" ").strip
     end
 
     private
@@ -49,6 +50,10 @@ module PrettyStrings
       text.gsub!(/\{.*?\}/, '') || text
       text.gsub!(/♚/, '}') || text
       text.gsub!(/⚘/, '{') || text
+    end
+
+    def remove_consecutive_dots(text)
+      text.gsub!(/\.{5,}/, '') || text
     end
 
     def replace_bracket_with_symbol(text)

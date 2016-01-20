@@ -129,4 +129,14 @@ describe PrettyStrings do
     text = "How satisfied were you with the way in which the car was handed over to you?<it pos='begin'>&lt;6&gt;</it>"
     expect(PrettyStrings::Cleaner.new(text).pretty).to eq("How satisfied were you with the way in which the car was handed over to you?")
   end
+
+  it "prettifies example #026" do
+    text = "hello..........................................................................................................................................................................................................................................................................................................................................................."
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq("hello")
+  end
+
+  it "prettifies example #027" do
+    text = "hello...what is your name."
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq("hello...what is your name.")
+  end
 end
