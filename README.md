@@ -8,17 +8,16 @@ Some strings have been abused by being run through many a CAT tool (one too many
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'pretty_strings'
+**Ruby**  
+```
+gem install pretty_strings
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install pretty_strings
+**Ruby on Rails**  
+Add this line to your application’s Gemfile:  
+```ruby 
+gem 'pretty_strings'
+```
 
 ## Usage
 
