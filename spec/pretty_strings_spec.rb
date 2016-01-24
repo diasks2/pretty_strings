@@ -139,4 +139,14 @@ describe PrettyStrings do
     text = "hello...what is your name."
     expect(PrettyStrings::Cleaner.new(text).pretty).to eq("hello...what is your name.")
   end
+
+  it "prettifies example #028" do
+    text = "hello <3 and </3 and the temp is <8 and >6...what is your name."
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq("hello <3 and </3 and the temp is <8 and >6...what is your name.")
+  end
+
+  it "prettifies example #029" do
+    text = "hello <h1>This is HTML</h1>."
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq("hello This is HTML.")
+  end
 end

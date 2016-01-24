@@ -1,5 +1,4 @@
 require "pretty_strings/version"
-require "rails-html-sanitizer"
 
 module PrettyStrings
   class Cleaner
@@ -73,7 +72,8 @@ module PrettyStrings
     end
 
     def sanitize_text(text)
-      Rails::Html::FullSanitizer.new.sanitize(text)
+      text.gsub!(/(<[^>\d\/][^>]*>)|\n\t/, '') || text
+      text.gsub!(/(<\/[^>\d][^>]*>)|\n\t/, '') || text
     end
 
     def scan_for_code(text)
