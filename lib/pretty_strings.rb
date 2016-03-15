@@ -15,6 +15,7 @@ module PrettyStrings
         remove_newlines(
         replace_tabs(
         remove_bracketed_code(
+        remove_twb_tags(
         scan_for_code(
         escape_text(
         sanitize_text(
@@ -23,7 +24,7 @@ module PrettyStrings
         sanitize_text(
         replace_bracket_with_symbol(
         text
-      ))))))))))))).squeeze(" ").strip
+      )))))))))))))).squeeze(" ").strip
     end
 
     private
@@ -49,6 +50,24 @@ module PrettyStrings
       text.gsub!(/\{.*?\}/, '') || text
       text.gsub!(/♚/, '}') || text
       text.gsub!(/⚘/, '{') || text
+    end
+
+    def remove_twb_tags(text)
+      remove_twb_tags_post(
+      remove_twb_tags_post(
+      remove_twb_tags_post(
+      remove_twb_tags_post(
+      remove_twb_tags_pre(text)))))
+    end
+
+    def remove_twb_tags_post(text)
+      text.gsub!(/({\\\S+ )([^{}}]*)(})/, '\2') || text
+      text.gsub!('\sectd\\linex0\\headery708\\footery708\\colsx708\\endnhere\\sectlinegrid360\\sectdefaultcl\\sftnbj ', '') || text
+    end
+
+    def remove_twb_tags_pre(text)
+      text.gsub!(/\{\\super \d+}/, '') || text
+      text.gsub!(/\{\\\*\\fldinst [^{}]*}/, '') || text
     end
 
     def remove_consecutive_dots(text)

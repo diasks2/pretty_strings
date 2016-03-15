@@ -149,4 +149,54 @@ describe PrettyStrings do
     text = "hello <h1>This is HTML</h1>."
     expect(PrettyStrings::Cleaner.new(text).pretty).to eq("hello This is HTML.")
   end
+
+  it "prettifies example #030" do
+    text = 'Para obtener noticias actualizadas, visite nuestro {\field {\*\fldinst HYPERLINK "http://example.com/default.aspx?clientid=-1"}{\cs37\ul\cf2 {\fldrslt newsroom}}}\sectd\linex0\headery708\footery708\colsx708\endnhere\sectlinegrid360\sectdefaultcl\sftnbj  o suscríbase a nuestro  {\field {\*\fldinst HYPERLINK "http://example.com/content/newsfeeds.aspx" \\t "_blank"}{\cs37\ul\cf2 {\fldrslt news feed}}}\sectd\linex0\headery708\footery708\colsx708\endnhere\sectlinegrid360\sectdefaultcl\sftnbj .'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq("Para obtener noticias actualizadas, visite nuestro newsroom o suscríbase a nuestro news feed.")
+  end
+
+  it "prettifies example #031" do
+    text = 'For ongoing news, please visit our {\field {\*\fldinst HYPERLINK "http://example.com/default.aspx?clientid=-1"}{\cs37\ul\cf2 {\fldrslt newsroom}}}\sectd\linex0\headery708\footery708\colsx708\endnhere\sectlinegrid360\sectdefaultcl\sftnbj  or subscribe to our {\field {\*\fldinst HYPERLINK "http://example.com/content/newsfeeds.aspx" \\t "_blank"}{\cs37\ul\cf2 {\fldrslt news feed}}}\sectd\linex0\headery708\footery708\colsx708\endnhere\sectlinegrid360\sectdefaultcl\sftnbj .'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq("For ongoing news, please visit our newsroom or subscribe to our news feed.")
+  end
+
+  it "prettifies example #032" do
+    text = 'Tenemos el agrado de dirigirnos a ustedes a fin de formularles una oferta para la utilización de Pallets (según se define en el punto 1.1 (xi) {\i infra), }vinculados al negocio de las gaseosas, sujeta a las siguientes cláusulas y condiciones (la "{\ul Oferta}").'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq('Tenemos el agrado de dirigirnos a ustedes a fin de formularles una oferta para la utilización de Pallets (según se define en el punto 1.1 (xi) infra), vinculados al negocio de las gaseosas, sujeta a las siguientes cláusulas y condiciones (la "Oferta").')
+  end
+
+  it "prettifies example #033" do
+    text = '"{\ul Alquiler}": {\expndtw-1 es la suma en pesos básica diaria que el Participante debe abonar a CHEP }durante ei tiempo que cada Pallet permanece en poder del Participante, según se detalla en el Anexo VIII.'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq('"Alquiler": es la suma en pesos básica diaria que el Participante debe abonar a CHEP durante ei tiempo que cada Pallet permanece en poder del Participante, según se detalla en el Anexo VIII.')
+  end
+
+  it "prettifies example #034" do
+    text = 'Pacific Islander, Asian, African, Hispanice, {\highlight7 Pacific islander} or Native American ancestry'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq('Pacific Islander, Asian, African, Hispanice, Pacific islander or Native American ancestry')
+  end
+
+  it "prettifies example #035" do
+    text = 'STIMULATORS OF INSULIN RELEASE (Insulin Secretagogues) \endash  increase insulin secretion from the pancreas{\super 1}'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq('STIMULATORS OF INSULIN RELEASE (Insulin Secretagogues) \endash increase insulin secretion from the pancreas')
+  end
+
+  it "prettifies example #036" do
+    text = '{\f32 náuseas, jaqueca, hipoglucemia (cuando se usa con secretagogos de la insulina)} '
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq('náuseas, jaqueca, hipoglucemia (cuando se usa con secretagogos de la insulina)')
+  end
+
+  it "prettifies example #037" do
+    text = '{\f32 goteo nasal, infección del tracto respiratorio superior, reacciones alérgicas severas raramente} {\f32 (inflamación de la lengua, garganta, rostro o cuerpo; sarpullido severo)\~}'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq('goteo nasal, infección del tracto respiratorio superior, reacciones alérgicas severas raramente (inflamación de la lengua, garganta, rostro o cuerpo; sarpullido severo)\~')
+  end
+
+  it "prettifies example #038" do
+    text = '{\field {\*\fldinst  HYPERLINK "" \\l "RANGE!a1c" }{\cs10 {\fldrslt A1c*}}}'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq('A1c*')
+  end
+
+  it "prettifies example #039" do
+    text = 'The two most important pieces of information for the carbohydrate controlled diet is the {\cs11\b\cf17 serving size} and the grams of {\cs11\b\cf17 total carbohydrate}.'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq('The two most important pieces of information for the carbohydrate controlled diet is the serving size and the grams of total carbohydrate.')
+  end
 end
