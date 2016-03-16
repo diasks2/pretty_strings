@@ -61,6 +61,7 @@ module PrettyStrings
     end
 
     def remove_twb_tags_post(text)
+      text.gsub!(/({\\b )([^{}}]*)(}\\line)/, '\2') || text
       text.gsub!(/({\\\S+ )([^{}}]*)(})/, '\2') || text
       text.gsub!('\sectd\\linex0\\headery708\\footery708\\colsx708\\endnhere\\sectlinegrid360\\sectdefaultcl\\sftnbj ', '') || text
     end

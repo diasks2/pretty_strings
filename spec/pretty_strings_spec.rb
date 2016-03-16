@@ -199,4 +199,9 @@ describe PrettyStrings do
     text = 'The two most important pieces of information for the carbohydrate controlled diet is the {\cs11\b\cf17 serving size} and the grams of {\cs11\b\cf17 total carbohydrate}.'
     expect(PrettyStrings::Cleaner.new(text).pretty).to eq('The two most important pieces of information for the carbohydrate controlled diet is the serving size and the grams of total carbohydrate.')
   end
+
+  it "prettifies example #040" do
+    text = '{\b About ABC Solutions}\line ABC Solutions is a leading provider of mission-critical communication solutions and services for enterprise and government customers.'
+    expect(PrettyStrings::Cleaner.new(text).pretty).to eq('About ABC Solutions ABC Solutions is a leading provider of mission-critical communication solutions and services for enterprise and government customers.')
+  end
 end
