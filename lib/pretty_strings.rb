@@ -1,3 +1,4 @@
+require "cgi/escape"
 require "pretty_strings/version"
 
 module PrettyStrings
